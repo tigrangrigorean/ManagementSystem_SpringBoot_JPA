@@ -78,9 +78,12 @@ public class Address {
 	public void setCity(String city) {
 		this.city = city;
 	}
+<<<<<<< HEAD
 
 	@Override
 	public String toString() {
 		return "Address [country=" + country + ", city=" + city + "]";
 	}
+=======
+>>>>>>> e7c19ed (Add Project Architecture)
 }
