@@ -1,5 +1,6 @@
 .settings/
 bin/
+.idea
 *.classpath
 *.project
 target/
