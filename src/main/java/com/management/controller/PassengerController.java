@@ -15,6 +15,7 @@ public class PassengerController {
 	
 	
 	PassengerServiceImpl passengerServiceImpl;
+	
 	@Autowired
 	public PassengerController(PassengerServiceImpl passengerServiceImpl) {
 		this.passengerServiceImpl = passengerServiceImpl;
