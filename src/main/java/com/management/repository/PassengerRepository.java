@@ -9,5 +9,5 @@ import com.management.model.Passenger;
 public interface PassengerRepository extends JpaRepository<Passenger, Long>{
 
 	Passenger getPassengerById(long id);
-	
+		
 }
