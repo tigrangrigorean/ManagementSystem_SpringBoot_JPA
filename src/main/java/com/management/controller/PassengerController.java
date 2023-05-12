@@ -20,8 +20,9 @@ import com.management.service.PassengerServiceImpl;
 public class PassengerController {
 	
 	
+
 	private final PassengerServiceImpl passengerServiceImpl;
-	
+
 	@Autowired
 	public PassengerController(PassengerServiceImpl passengerServiceImpl) {
 		this.passengerServiceImpl = passengerServiceImpl;
