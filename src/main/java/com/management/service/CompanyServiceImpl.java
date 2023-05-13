@@ -26,8 +26,8 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public Company getById(long id) {
         Validator.checkId(id);
-        Validator.checkEntity(companyRepository.getCompaniesById(id));
-        return companyRepository.getCompaniesById(id);
+        Validator.checkEntity(companyRepository.getCompanyById(id));
+        return companyRepository.getCompanyById(id);
     }
 
     @Override
@@ -48,7 +48,7 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public Company update(long id, Company company) {
-        Company updateCompany = companyRepository.getCompaniesById(id);
+        Company updateCompany = companyRepository.getCompanyById(id);
         Validator.checkEntity(updateCompany);
         Validator.checkEntity(company);
         company.setId(id);
@@ -58,7 +58,7 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public void delete(long companyId) {
-        Company company = companyRepository.getCompaniesById(companyId);
+        Company company = companyRepository.getCompanyById(companyId);
         Validator.checkEntity(company);
         companyRepository.delete(company);
     }
