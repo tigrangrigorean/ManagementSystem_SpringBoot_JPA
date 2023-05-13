@@ -23,7 +23,7 @@ public class Validator {
 	 * @param id
 	 */
 	public static void checkId(long id) {
-		if(id<0) {
+		if(id <= 0) {
 			throw new IllegalArgumentException("Entered ID is incorrect.");
 		}
 	}
