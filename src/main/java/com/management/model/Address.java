@@ -28,7 +28,11 @@ public class Address {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @param id
+=======
+	 * @param
+>>>>>>> origin/Lilia_Branch
 	 * @param country
 	 * @param city
 	 */
@@ -79,11 +83,18 @@ public class Address {
 		this.city = city;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> origin/Lilia_Branch
 	@Override
 	public String toString() {
 		return "Address [country=" + country + ", city=" + city + "]";
 	}
+<<<<<<< HEAD
 =======
 >>>>>>> e7c19ed (Add Project Architecture)
+=======
+>>>>>>> origin/Lilia_Branch
 }

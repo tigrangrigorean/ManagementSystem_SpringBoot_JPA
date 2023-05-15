@@ -23,7 +23,11 @@ public class Validator {
 	 * @param id
 	 */
 	public static void checkId(long id) {
+<<<<<<< HEAD
 		if(id<0) {
+=======
+		if(id <= 0) {
+>>>>>>> origin/Lilia_Branch
 			throw new IllegalArgumentException("Entered ID is incorrect.");
 		}
 	}
