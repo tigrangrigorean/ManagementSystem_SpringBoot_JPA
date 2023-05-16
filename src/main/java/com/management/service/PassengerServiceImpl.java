@@ -1,65 +1,44 @@
 package com.management.service;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 import java.util.List;
-=======
-import java.util.Set;
->>>>>>> e7c19ed (Add Project Architecture)
-=======
-import java.util.List;
->>>>>>> origin/Lilia_Branch
 
+
+import com.management.model.Trip;
+import com.management.repository.PassInTripRepository;
+import com.management.repository.TripRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.management.model.Passenger;
 import com.management.repository.PassengerRepository;
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 import com.management.validation.Validator;
-=======
->>>>>>> e7c19ed (Add Project Architecture)
-=======
-import com.management.validation.Validator;
->>>>>>> origin/Lilia_Branch
+
 
 @Service
 public class PassengerServiceImpl implements PassengerService{
-	
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> origin/Lilia_Branch
+
+
 	private final PassengerRepository passengerRepository;
-	
+	private final TripRepository tripRepository;
+	private final PassInTripRepository passInTripRepository;
+
+
 	@Autowired
-	public PassengerServiceImpl(PassengerRepository passengerRepository) {
+	public PassengerServiceImpl(PassengerRepository passengerRepository, TripRepository tripRepository, PassInTripRepository passInTripRepository) {
 		this.passengerRepository = passengerRepository;
+		this.tripRepository = tripRepository;
+		this.passInTripRepository = passInTripRepository;
 	}
 
 	@Override
 	public Passenger getById(long id) {
 		Validator.checkId(id);
 		Validator.checkEntity(passengerRepository.getPassengerById(id));
-<<<<<<< HEAD
-=======
-	@Autowired
-	private PassengerRepository passengerRepository;
-
-	@Override
-	public Passenger getById(long id) {
->>>>>>> e7c19ed (Add Project Architecture)
-=======
->>>>>>> origin/Lilia_Branch
 		return passengerRepository.getPassengerById(id);
 	}
 
 	@Override
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> origin/Lilia_Branch
 	public List<Passenger> getAll() {
 		Validator.checkList(passengerRepository.findAll());
 		return passengerRepository.findAll();
@@ -67,28 +46,12 @@ public class PassengerServiceImpl implements PassengerService{
 
 	@Override
 	public List<Passenger> get(int offset, int perPage, String sort) {
-<<<<<<< HEAD
-=======
-	public Set<Passenger> getAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Set<Passenger> get(int offset, int perPage, String sort) {
->>>>>>> e7c19ed (Add Project Architecture)
-=======
->>>>>>> origin/Lilia_Branch
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Passenger save(Passenger passenger) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> origin/Lilia_Branch
 		return passengerRepository.save(passenger);
 	}
 
@@ -99,40 +62,38 @@ public class PassengerServiceImpl implements PassengerService{
 		Validator.checkEntity(passenger);
 		passenger.setId(id);
 		return passengerRepository.save(passenger);
-<<<<<<< HEAD
-=======
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Passenger update(Passenger passenger) {
-		// TODO Auto-generated method stub
-		return null;
->>>>>>> e7c19ed (Add Project Architecture)
-=======
->>>>>>> origin/Lilia_Branch
 	}
 
 	@Override
 	public void delete(long passengerId) {
-<<<<<<< HEAD
-<<<<<<< HEAD
 		Passenger passenger = passengerRepository.getPassengerById(passengerId);
 		Validator.checkEntity(passenger);
 		passengerRepository.delete(passenger);
-=======
-		// TODO Auto-generated method stub
-		
->>>>>>> e7c19ed (Add Project Architecture)
-=======
-		Passenger passenger = passengerRepository.getPassengerById(passengerId);
-		Validator.checkEntity(passenger);
-		passengerRepository.delete(passenger);
->>>>>>> origin/Lilia_Branch
 	}
-	
-	
-	
 
+	@Override
+	public List<Passenger> getPassengersOfTrip(long tripNumber) {
+		Validator.checkId(tripNumber);
+		Trip trip = tripRepository.getTripByTripNumber(tripNumber);
+		Validator.checkEntity(trip);
+		return passInTripRepository.findPassengerByTrip(trip);
+	}
+
+	@Override
+	public void registerTrip(Trip trip, Passenger passenger) {
+
+
+
+	}
+
+	@Override
+	public void cancelTrip(long passengerId, long tripNumber) {
+		Validator.checkId(passengerId);
+		Validator.checkId(tripNumber);
+		Passenger passenger = passengerRepository.getPassengerById(passengerId);
+		Trip trip = tripRepository.getTripByTripNumber(tripNumber);
+		Validator.checkEntity(trip);
+		Validator.checkEntity(passenger);
+		passInTripRepository.deletePassInTripByPassenger(passenger);
+	}
 }

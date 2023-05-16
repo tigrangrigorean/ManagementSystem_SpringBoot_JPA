@@ -57,6 +57,10 @@ public class PassengerController {
 		passengerServiceImpl.delete(id);
 		return "Passenger by ID " + id + " deleted";
 	}
-	
+
+	@GetMapping("/bytripid/{trip}")
+	public String findPassengerByTrip(@PathVariable(value = "trip") long id){
+		return  findPassengerByTrip(id);
+	}
 
 }

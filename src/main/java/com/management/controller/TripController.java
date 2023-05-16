@@ -45,4 +45,13 @@ public class TripController {
         return "Trip by ID " + id + " deleted";
     }
 
+    @GetMapping("townfrom/{townFrom}")
+    public String getTripsByTownFrom(@PathVariable(value =  "townFrom") String townFrom){
+        return tripServiceImpl.getTripsFrom(townFrom).toString();
+    }
+    @GetMapping("townto/{townTo}")
+    public String getTripsByTownTo(@PathVariable(value = "townTo") String townTo){
+        return tripServiceImpl.getTripsTo(townTo).toString();
+    }
+
 }

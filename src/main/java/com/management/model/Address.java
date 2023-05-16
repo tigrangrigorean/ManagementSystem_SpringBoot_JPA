@@ -10,7 +10,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "address")
 public class Address {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "address_id")
@@ -19,20 +19,16 @@ public class Address {
 	private String country;
 	@Column(name = "city")
 	private String city;
-	
+
 	/**
 	 * Default constructor
 	 */
 	public Address() {
-		
+
 	}
 
 	/**
-<<<<<<< HEAD
-	 * @param id
-=======
 	 * @param
->>>>>>> origin/Lilia_Branch
 	 * @param country
 	 * @param city
 	 */
@@ -82,19 +78,10 @@ public class Address {
 	public void setCity(String city) {
 		this.city = city;
 	}
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
-  
->>>>>>> origin/Lilia_Branch
+
 	@Override
 	public String toString() {
 		return "Address [country=" + country + ", city=" + city + "]";
 	}
-<<<<<<< HEAD
-=======
->>>>>>> e7c19ed (Add Project Architecture)
-=======
->>>>>>> origin/Lilia_Branch
 }

@@ -5,9 +5,12 @@ import org.springframework.stereotype.Repository;
 
 import com.management.model.Passenger;
 
+import java.util.List;
+
 @Repository
 public interface PassengerRepository extends JpaRepository<Passenger, Long>{
 
 	Passenger getPassengerById(long id);
-		
+
+
 }
