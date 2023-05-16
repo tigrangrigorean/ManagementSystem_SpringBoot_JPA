@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Set;
 
 import com.management.model.Passenger;
+import com.management.model.Trip;
 
 public interface PassengerService {
 	
@@ -13,5 +14,8 @@ public interface PassengerService {
 	    Passenger save(Passenger passenger);
 	    Passenger update(long id,Passenger passenger);
 	    void delete(long passengerId);
+		List<Passenger> getPassengersOfTrip(long tripNumber);
+		void registerTrip(Trip trip, Passenger passenger);
+		void cancelTrip(long passengerId,long tripNumber);
 
 }

@@ -11,8 +11,8 @@ public interface TripService {
     Trip save(Trip passenger);
     Trip update(long id, Trip trip);
     void delete(long tripId);
-    List<Trip> getTripsFrom(String city);
-    List<Trip> getTripsTo(String city);
+    List<Trip> getTripsFrom(String townFrom);
+    List<Trip> getTripsTo(String townTo);
 
 
 

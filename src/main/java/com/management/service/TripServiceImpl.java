@@ -6,6 +6,7 @@ import com.management.validation.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -21,8 +22,8 @@ public class TripServiceImpl implements TripService{
     @Override
     public Trip getById(long id) {
         Validator.checkId(id);
-        Validator.checkEntity(tripRepository.getTripById(id));
-        return tripRepository.getTripById(id);
+        Validator.checkEntity(tripRepository.getTripByTripId(id));
+        return tripRepository.getTripByTripId(id);
     }
 
     @Override
@@ -43,7 +44,7 @@ public class TripServiceImpl implements TripService{
 
     @Override
     public Trip update(long id, Trip trip) {
-        Trip updateTrip = tripRepository.getTripById(id);
+        Trip updateTrip = tripRepository.getTripByTripId(id);
         Validator.checkEntity(updateTrip);
         Validator.checkEntity(trip);
         trip.setTripId(id);
@@ -52,18 +53,21 @@ public class TripServiceImpl implements TripService{
 
     @Override
     public void delete(long tripId) {
-            Trip trip = tripRepository.getTripById(tripId);
+            Trip trip = tripRepository.getTripByTripId(tripId);
             Validator.checkEntity(trip);
             tripRepository.delete(trip);
     }
 
     @Override
-    public List<Trip> getTripsFrom(String city) {
-        return null;
+    public List<Trip> getTripsFrom(String townFrom) {
+        Validator.checkList(tripRepository.getTripsByTownFrom(townFrom));
+        return tripRepository.getTripsByTownFrom(townFrom);
     }
 
     @Override
-    public List<Trip> getTripsTo(String city) {
-        return null;
+    public List<Trip> getTripsTo(String townTo) {
+        Validator.checkList(tripRepository.getTripsByTownTo(townTo));
+        return tripRepository.getTripsByTownTo(townTo);
     }
+
 }
