@@ -43,21 +43,31 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public Company save(Company company) {
+    	Validator.checkEntity(company);
         return companyRepository.save(company);
     }
 
     @Override
-    public Company update(long id, Company company) {
-        Company updateCompany = companyRepository.getCompanyById(id);
+    public Company update(long id, Company updateCompany) {
+    	Validator.checkId(id);
+        Company company = companyRepository.getCompanyById(id);
         Validator.checkEntity(updateCompany);
         Validator.checkEntity(company);
-        company.setId(id);
-        return companyRepository.save(company);
+        
+        if(updateCompany.getName() == null || updateCompany.getName().isEmpty()) {
+        	updateCompany.setName(company.getName());
+        }
+        if(updateCompany.getFoundingDate() == null || updateCompany.getFoundingDate().isEmpty()) {
+        	updateCompany.setFoundingDate(company.getFoundingDate());
+        }
+        updateCompany.setId(id);
+        return companyRepository.save(updateCompany);
 
     }
 
     @Override
     public void delete(long companyId) {
+    	Validator.checkId(companyId);
         Company company = companyRepository.getCompanyById(companyId);
         Validator.checkEntity(company);
         companyRepository.delete(company);

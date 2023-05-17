@@ -11,6 +11,8 @@ import java.util.List;
 public interface PassengerRepository extends JpaRepository<Passenger, Long>{
 
 	Passenger getPassengerById(long id);
+	
+	Passenger updatePassenger(Passenger passenger);
 
 
 }

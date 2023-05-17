@@ -17,5 +17,6 @@ public interface PassengerService {
 		List<Passenger> getPassengersOfTrip(long tripNumber);
 		void registerTrip(Trip trip, Passenger passenger);
 		void cancelTrip(long passengerId,long tripNumber);
+		
 
 }

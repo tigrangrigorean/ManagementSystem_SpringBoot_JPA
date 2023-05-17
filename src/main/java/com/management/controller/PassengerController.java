@@ -59,8 +59,8 @@ public class PassengerController {
 	}
 
 	@GetMapping("/bytripid/{trip}")
-	public String findPassengerByTrip(@PathVariable(value = "trip") long id){
-		return  findPassengerByTrip(id);
+	public String findPassengerByTrip(@PathVariable(value = "trip") long tripNumber){
+		return passengerServiceImpl.getPassengersOfTrip(tripNumber).toString();
 	}
 
 }

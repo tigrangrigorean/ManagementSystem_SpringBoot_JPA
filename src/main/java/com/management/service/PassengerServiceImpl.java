@@ -52,20 +52,33 @@ public class PassengerServiceImpl implements PassengerService{
 
 	@Override
 	public Passenger save(Passenger passenger) {
+		Validator.checkEntity(passenger);
 		return passengerRepository.save(passenger);
 	}
 
 	@Override
-	public Passenger update(long id, Passenger passenger) {
-		Passenger updatePassenger = passengerRepository.getPassengerById(id);
+	public Passenger update(long id, Passenger updatePassenger) {
+		Validator.checkId(id);
+		Passenger passenger = passengerRepository.getPassengerById(id);
 		Validator.checkEntity(updatePassenger);
 		Validator.checkEntity(passenger);
-		passenger.setId(id);
-		return passengerRepository.save(passenger);
+		
+		if(updatePassenger.getName() == null || updatePassenger.getName().isEmpty()) {
+			updatePassenger.setName(passenger.getName());
+		}
+		if(updatePassenger.getPhone() == null || updatePassenger.getPhone().isEmpty()) {
+			updatePassenger.setPhone(passenger.getPhone());
+		}
+		if(updatePassenger.getAddress() == null) {
+			updatePassenger.setAddress(passenger.getAddress());
+		}
+		updatePassenger.setId(id);
+		return passengerRepository.updatePassenger(updatePassenger);
 	}
 
 	@Override
 	public void delete(long passengerId) {
+		Validator.checkId(passengerId);
 		Passenger passenger = passengerRepository.getPassengerById(passengerId);
 		Validator.checkEntity(passenger);
 		passengerRepository.delete(passenger);
@@ -81,7 +94,6 @@ public class PassengerServiceImpl implements PassengerService{
 
 	@Override
 	public void registerTrip(Trip trip, Passenger passenger) {
-
 
 
 	}
