@@ -39,6 +39,7 @@ public class TripServiceImpl implements TripService{
 
     @Override
     public Trip save(Trip trip) {
+    	Validator.checkEntity(trip);
         return tripRepository.save(trip);
     }
 
@@ -53,9 +54,11 @@ public class TripServiceImpl implements TripService{
 
     @Override
     public void delete(long tripId) {
-            Trip trip = tripRepository.getTripByTripId(tripId);
-            Validator.checkEntity(trip);
-            tripRepository.delete(trip);
+    	
+    	Validator.checkId(tripId);
+        Trip trip = tripRepository.getTripByTripId(tripId);
+        Validator.checkEntity(trip);
+        tripRepository.delete(trip);
     }
 
     @Override
